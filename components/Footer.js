@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function Footer() {
   return (
     <View style={footerStyles.container}>
-      <Text style={footerStyles.footerText}>Todos los derechos reservados por Little Lemon, 2022</Text>
+      <Text style={footerStyles.footerText}>Todos los derechos reservados por Little Lemon, 2024</Text>
     </View>
   );
 }
