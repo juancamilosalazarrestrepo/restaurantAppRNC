@@ -9,9 +9,10 @@ import {
   useColorScheme,
   useWindowDimensions,
   ScrollView,
+  Pressable,
 } from "react-native";
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
   const [firstName, onChangeFirstName] = useState("");
   const colorScheme = useColorScheme();
   const window = useWindowDimensions();
@@ -41,19 +42,22 @@ export default function WelcomeScreen() {
             accessible={true}
             accesibilityLabel="Food Picture 2"
           />
-  
+
           <Text style={welcomeStyles.title}>Bienvenido a Little Lemon</Text>
           <Text style={welcomeStyles.text}>
             Little Lemon es un encantador bistró de barrio que sirve comida
             sencilla y cócteles clásicos en un ambiente animado pero informal.
             ¡Nos encantaría saber más sobre su experiencia con nosotros!
           </Text>
-          <Text style={welcomeStyles.regular}>Window Dimensions</Text>
+          {/*    <Text style={welcomeStyles.regular}>Window Dimensions</Text>
           <Text style={welcomeStyles.regular}>Height: {window.height}</Text>
           <Text style={welcomeStyles.regular}>Width: {window.width}</Text>
           <Text style={welcomeStyles.regular}>
             Font scale: {window.fontScale}
-          </Text>
+          </Text> */}
+          <Pressable onPress={()=>navigation.navigate('Menu')}>
+            <Text style={welcomeStyles.buttonText}>View Menu</Text>
+          </Pressable>
         </View>
       </ScrollView>
     </View>
@@ -61,7 +65,7 @@ export default function WelcomeScreen() {
 }
 
 const welcomeStyles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", paddingTop: 0},
+  container: { flex: 1, justifyContent: "center", paddingTop: 0 },
   title: {
     padding: 10,
     fontSize: 30,
@@ -83,7 +87,7 @@ const welcomeStyles = StyleSheet.create({
     margin: 10,
   },
   scroll: {
-    paddingTop:20,
+    paddingTop: 20,
     padding: "auto",
   },
   centeredContainer: {
@@ -91,4 +95,8 @@ const welcomeStyles = StyleSheet.create({
     alignItems: "center",
   },
   regular: {},
+  buttonText:{
+    fontSize:25,
+    marginBottom:50
+  }
 });

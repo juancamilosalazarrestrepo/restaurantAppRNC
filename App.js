@@ -17,7 +17,7 @@ export default function App() {
     <NavigationContainer>
       <View style={styles.container}>
         <Stack.Navigator
-          initialRouteName="Login"
+          initialRouteName="Welcome"
           screenOptions={{ headerStyle: { backgroundColor: "#F2CA17" } }}
         >
           <Stack.Screen
@@ -26,6 +26,7 @@ export default function App() {
             component={WelcomeScreen}
           />
           <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Menu" component={MenuItems} />
         </Stack.Navigator>
       </View>
       <View style={styles.footerContainer}>
