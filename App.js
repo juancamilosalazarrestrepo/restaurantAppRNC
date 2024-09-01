@@ -9,8 +9,12 @@ import WelcomeScreen from "./components/WelcomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Image } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
+
+const Tab = createBottomTabNavigator();
 
 function LogoTitle() {
   return (
@@ -30,7 +34,8 @@ export default function App() {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <NavigationContainer>
-      <View style={styles.container}>
+      {/*  <View style={styles.container}>
+      
         <Stack.Navigator
           initialRouteName="WelcomeLogin"
           screenOptions={{
@@ -49,11 +54,32 @@ export default function App() {
           />
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="Menu" component={MenuItems} />
-        </Stack.Navigator>
-      </View>
-      <View style={styles.footerContainer}>
+        </Stack.Navigator> 
+
+        
+      </View> */}
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === "Welcome") {
+              iconName = "home";
+            } else if (route.name === "Menu") {
+              iconName = "menu";
+            }
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: "tomato",
+          tabBarInactiveTintColor: "gray",
+        })}
+      >
+        <Tab.Screen name="Welcome" component={WelcomeScreen} />
+        <Tab.Screen name="Menu" component={MenuItems} />
+      </Tab.Navigator>
+      {/* <View style={styles.footerContainer}>
         <Footer />
-      </View>
+      </View> */}
     </NavigationContainer>
   );
 }
