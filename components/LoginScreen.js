@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   const [firstName, onChangeFirstName] = useState("");
   const [password, onChangePassword] = useState("");
   const [logged, setLogged] = useState(false);
@@ -31,27 +31,27 @@ export default function LoginScreen() {
           <TextInput
             style={[
               styles.input,
-              focusedInput === 'firstName' && styles.inputFocused
+              focusedInput === "firstName" && styles.inputFocused,
             ]}
             value={firstName}
             onChangeText={onChangeFirstName}
             placeholder={"email"}
             keyboardType={"email-address"}
-            onFocus={() => setFocusedInput('firstName')}
+            onFocus={() => setFocusedInput("firstName")}
             onBlur={() => setFocusedInput(null)}
           />
 
           <TextInput
             style={[
               styles.input,
-              focusedInput === 'password' && styles.inputFocused
+              focusedInput === "password" && styles.inputFocused,
             ]}
             value={password}
             onChangeText={onChangePassword}
             placeholder={"Password"}
             keyboardType={"default"}
             secureTextEntry={true}
-            onFocus={() => setFocusedInput('password')}
+            onFocus={() => setFocusedInput("password")}
             onBlur={() => setFocusedInput(null)}
           />
 
@@ -59,6 +59,7 @@ export default function LoginScreen() {
             style={styles.button}
             onPress={() => {
               setLogged(!logged);
+              navigation.navigate("Welcome");
             }}
           >
             <Text style={styles.buttonText}>Login</Text>
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
   },
   inputFocused: {
     borderColor: "#4E8E41",
-    borderWidth: 1.2 // Color del borde cuando el input está enfocado
+    borderWidth: 1.2, // Color del borde cuando el input está enfocado
   },
   button: {
     fontSize: 14,

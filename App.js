@@ -8,8 +8,23 @@ import MenuItems from "./components/MenuItems";
 import WelcomeScreen from "./components/WelcomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Image } from "react-native";
 
 const Stack = createNativeStackNavigator();
+
+function LogoTitle() {
+  return (
+    <Image
+      source={require("./img/littlelemologo.png")}
+      style={{
+        height: 40,
+        width: 300,
+        resizeMode: "contain",
+        alignSelf: "center",
+      }}
+    />
+  );
+}
 
 export default function App() {
   const [showMenu, setShowMenu] = useState(false);
@@ -17,15 +32,22 @@ export default function App() {
     <NavigationContainer>
       <View style={styles.container}>
         <Stack.Navigator
-          initialRouteName="Welcome"
-          screenOptions={{ headerStyle: { backgroundColor: "#F2CA17" } }}
+          initialRouteName="WelcomeLogin"
+          screenOptions={{
+            headerStyle: { backgroundColor: "#F2CA17" },
+            headerTintColor: "#ffffff",
+            headerTitleStyle: { fontWeight: "bold" },
+          }}
         >
           <Stack.Screen
-            options={{ title: "Home" }}
-            name="Welcome"
-            component={WelcomeScreen}
+            options={{
+              title: "Home",
+              headerTitle: (props) => <LogoTitle {...props} />,
+            }}
+            name="Login"
+            component={LoginScreen}
           />
-          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="Menu" component={MenuItems} />
         </Stack.Navigator>
       </View>

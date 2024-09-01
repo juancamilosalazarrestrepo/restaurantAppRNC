@@ -44,6 +44,8 @@ export default function WelcomeScreen({ navigation }) {
           />
 
           <Text style={welcomeStyles.title}>Bienvenido a Little Lemon</Text>
+
+          <Text>Login to continue </Text>
           <Text style={welcomeStyles.text}>
             Little Lemon es un encantador bistró de barrio que sirve comida
             sencilla y cócteles clásicos en un ambiente animado pero informal.
@@ -55,7 +57,7 @@ export default function WelcomeScreen({ navigation }) {
           <Text style={welcomeStyles.regular}>
             Font scale: {window.fontScale}
           </Text> */}
-          <Pressable onPress={()=>navigation.navigate('Menu')}>
+          <Pressable onPress={() => navigation.navigate("Menu")}>
             <Text style={welcomeStyles.buttonText}>View Menu</Text>
           </Pressable>
         </View>
@@ -95,8 +97,8 @@ const welcomeStyles = StyleSheet.create({
     alignItems: "center",
   },
   regular: {},
-  buttonText:{
-    fontSize:25,
-    marginBottom:50
-  }
+  buttonText: {
+    fontSize: 25,
+    marginBottom: 50,
+  },
 });
