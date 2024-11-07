@@ -11,10 +11,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const Stack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
+
+const Drawer = createDrawerNavigator();
 
 function LogoTitle() {
   return (
@@ -58,7 +61,25 @@ export default function App() {
 
         
       </View> */}
-      <Tab.Navigator
+
+      <>
+        <NavigationContainer>
+          <View style={styles.container}>
+            <LittleLemonHeader />
+            <Drawer.Navigator useLegacyImplementation initialRouteName="Login">
+              <Drawer.Screen name="Welcome" component={WelcomeScreen} />
+              <Drawer.Screen name="Login" component={LoginScreen} />
+            </Drawer.Navigator>
+          </View>
+          <View style={styles.footerContainer}>
+            <LittleLemonFooter />
+          </View>
+        </NavigationContainer>
+      </>
+
+      {/*Navegacion Por cajones*/}
+
+      {/*  <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -76,7 +97,7 @@ export default function App() {
       >
         <Tab.Screen name="Welcome" component={WelcomeScreen} />
         <Tab.Screen name="Menu" component={MenuItems} />
-      </Tab.Navigator>
+      </Tab.Navigator> */}
       {/* <View style={styles.footerContainer}>
         <Footer />
       </View> */}
