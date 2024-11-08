@@ -30,35 +30,21 @@ export default function WelcomeScreen({ navigation }) {
         <View style={welcomeStyles.centeredContainer}>
           <Image
             style={welcomeStyles.image}
-            source={require("../img/food1.webp")}
-            resizeMode="cover"
+            source={require("../assets/little-lemon-logo.png")}
+            resizeMode="contain"
             accessible={true}
             accesibilityLabel="Food Picture 1"
           />
-          <Image
-            style={welcomeStyles.image}
-            source={require("../img/food2.jpeg")}
-            resizeMode="cover"
-            accessible={true}
-            accesibilityLabel="Food Picture 2"
-          />
 
-          <Text style={welcomeStyles.title}>Bienvenido a Little Lemon</Text>
-
-          <Text>Login to continue </Text>
           <Text style={welcomeStyles.text}>
-            Little Lemon es un encantador bistró de barrio que sirve comida
-            sencilla y cócteles clásicos en un ambiente animado pero informal.
-            ¡Nos encantaría saber más sobre su experiencia con nosotros!
+            Little Lemon, your local Mediterranean Bistro
           </Text>
-          {/*    <Text style={welcomeStyles.regular}>Window Dimensions</Text>
-          <Text style={welcomeStyles.regular}>Height: {window.height}</Text>
-          <Text style={welcomeStyles.regular}>Width: {window.width}</Text>
-          <Text style={welcomeStyles.regular}>
-            Font scale: {window.fontScale}
-          </Text> */}
-          <Pressable onPress={() => navigation.navigate("Menu")}>
-            <Text style={welcomeStyles.buttonText}>View Menu</Text>
+
+          <Pressable
+            onPress={() => navigation.navigate("Subscribe")}
+            style={welcomeStyles.button}
+          >
+            <Text style={welcomeStyles.buttonText}>Newsletter</Text>
           </Pressable>
         </View>
       </ScrollView>
@@ -75,7 +61,15 @@ const welcomeStyles = StyleSheet.create({
     color: "#212427",
     textAlign: "center",
   },
-  text: { fontSize: 20, color: "#212427", paddingTop: 0, padding: 5 },
+  text: {
+    fontSize: 20,
+    color: "#212427",
+    marginTop: 35,
+    marginBottom:20,
+    paddingTop: 0,
+    padding: 5,
+    textAlign: "center",
+  },
   input: { backgroundColor: "#EDEFEE" },
   logo: {
     height: 100,
@@ -83,10 +77,10 @@ const welcomeStyles = StyleSheet.create({
     resizeMode: "contain",
   },
   image: {
-    width: 350,
-    height: 250,
-    borderRadius: 10,
-    margin: 10,
+    width: 150,
+    height: 200,
+    borderRadius: 0,
+    marginTop: 30,
   },
   scroll: {
     paddingTop: 20,
@@ -97,8 +91,20 @@ const welcomeStyles = StyleSheet.create({
     alignItems: "center",
   },
   regular: {},
+  button: {
+    fontSize: 12,
+    marginVertical: 8,
+    margin: 40,
+    padding: 10,
+    backgroundColor: "#40524C",
+    borderColor: "#40524C",
+    borderWidth: 2,
+    borderRadius: 12,
+    width: "90%",
+  },
   buttonText: {
-    fontSize: 25,
-    marginBottom: 50,
+    fontSize: 15,
+    textAlign: "center",
+    color: "#fff",
   },
 });

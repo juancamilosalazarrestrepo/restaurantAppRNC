@@ -12,95 +12,47 @@ import { Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import SubscribeScreen from "./components/SubscribeNewsletter";
 
 const Stack = createNativeStackNavigator();
-
-const Tab = createBottomTabNavigator();
-
-const Drawer = createDrawerNavigator();
-
-function LogoTitle() {
-  return (
-    <Image
-      source={require("./img/littlelemologo.png")}
-      style={{
-        height: 40,
-        width: 300,
-        resizeMode: "contain",
-        alignSelf: "center",
-      }}
-    />
-  );
-}
 
 export default function App() {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <NavigationContainer>
-      {/*  <View style={styles.container}>
-      
+      <View style={styles.container}>
         <Stack.Navigator
           initialRouteName="WelcomeLogin"
           screenOptions={{
-            headerStyle: { backgroundColor: "#F2CA17" },
-            headerTintColor: "#ffffff",
+            headerStyle: { backgroundColor: "#fff" },
+            headerTintColor: "#000",
             headerTitleStyle: { fontWeight: "bold" },
           }}
         >
           <Stack.Screen
             options={{
               title: "Home",
-              headerTitle: (props) => <LogoTitle {...props} />,
+              headerTitleAlign: "center",
+              headerTitle: (props) => (
+                <Text style={styles.titleText}>Welcome</Text>
+              ),
             }}
             name="Login"
-            component={LoginScreen}
+            component={WelcomeScreen}
           />
-          <Stack.Screen name="Welcome" component={WelcomeScreen} />
-          <Stack.Screen name="Menu" component={MenuItems} />
-        </Stack.Navigator> 
-
-        
-      </View> */}
-
-      <>
-        <NavigationContainer>
-          <View style={styles.container}>
-            <LittleLemonHeader />
-            <Drawer.Navigator useLegacyImplementation initialRouteName="Login">
-              <Drawer.Screen name="Welcome" component={WelcomeScreen} />
-              <Drawer.Screen name="Login" component={LoginScreen} />
-            </Drawer.Navigator>
-          </View>
-          <View style={styles.footerContainer}>
-            <LittleLemonFooter />
-          </View>
-        </NavigationContainer>
-      </>
-
-      {/*Navegacion Por cajones*/}
-
-      {/*  <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === "Welcome") {
-              iconName = "home";
-            } else if (route.name === "Menu") {
-              iconName = "menu";
-            }
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: "tomato",
-          tabBarInactiveTintColor: "gray",
-        })}
-      >
-        <Tab.Screen name="Welcome" component={WelcomeScreen} />
-        <Tab.Screen name="Menu" component={MenuItems} />
-      </Tab.Navigator> */}
-      {/* <View style={styles.footerContainer}>
-        <Footer />
-      </View> */}
+          <Stack.Screen
+            options={{
+              title: "Subscribe",
+              headerTitleAlign: "center",
+              headerTitle: (props) => (
+                <Text style={styles.titleText}>Subscribe</Text>
+              ),
+            }}
+            name="Subscribe"
+            component={SubscribeScreen}
+          />
+        </Stack.Navigator>
+      </View>
     </NavigationContainer>
   );
 }
@@ -125,6 +77,11 @@ const styles = StyleSheet.create({
     color: "#333333",
     textAlign: "center",
     fontSize: 32,
+  },
+  titleText: {
+    color: "#000",
+    textAlign: "center",
+    fontSize: 22,
   },
   footerContainer: { backgroundColor: "#333333" },
 });
