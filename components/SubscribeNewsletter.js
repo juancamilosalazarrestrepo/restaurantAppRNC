@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
   Text,
@@ -14,13 +13,11 @@ import {
 } from "react-native";
 
 export default function SubscribeScreen({ navigation }) {
-  const [firstName, onChangeFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [focusedInput, setFocusedInput] = useState(null);
   const [isEmailValid, setIsEmailValid] = useState(false);
 
   const colorScheme = useColorScheme();
-  const window = useWindowDimensions();
 
   const onChangeEmail = (text) => {
     setEmail(text);

@@ -1,21 +1,17 @@
-import { useState } from "react";
-import { StatusBar } from "expo-status-bar";
+
 import {
   StyleSheet,
   Text,
   View,
-  TextInput,
   Image,
   useColorScheme,
-  useWindowDimensions,
   ScrollView,
   Pressable,
 } from "react-native";
 
 export default function WelcomeScreen({ navigation }) {
-  const [firstName, onChangeFirstName] = useState("");
   const colorScheme = useColorScheme();
-  const window = useWindowDimensions();
+
   return (
     <View style={welcomeStyles.container}>
       <ScrollView

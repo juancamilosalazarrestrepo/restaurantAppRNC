@@ -1,23 +1,13 @@
 import * as React from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
-import { useState } from "react";
-import LittleLemonHeader from "./components/LittleLemonHeader";
-import Footer from "./components/Footer";
-import LoginScreen from "./components/LoginScreen";
-import MenuItems from "./components/MenuItems";
 import WelcomeScreen from "./components/WelcomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Image } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-import { createDrawerNavigator } from "@react-navigation/drawer";
 import SubscribeScreen from "./components/SubscribeNewsletter";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [showMenu, setShowMenu] = useState(false);
   return (
     <NavigationContainer>
       <View style={styles.container}>
